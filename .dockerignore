@@ -1,0 +1,83 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Virtual environments
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+logs/
+uploads/
+temp/
+tmp/
+data/vector_store/
+data/source_documents/*.pdf
+data/source_documents/*.docx
+data/source_documents/*.txt
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+docs/_build/
+*.md
+
+# Tests
+tests/
+test_*.py
+*_test.py
+
+# Jupyter notebooks (except in notebook directory)
+*.ipynb
+!notebook/*.ipynb
+
+# Development files
+requirements-dev.txt
+Dockerfile.dev
+docker-compose.dev.yml

@@ -1,0 +1,431 @@
+# Prompt Templates Configuration
+# This file defines all available prompt templates and their configurations
+
+# Question Answering Prompts
+qa_prompts:
+  basic_qa:
+    name: "basic_qa"
+    template: |
+      Based on the following context, please answer the question. 
+      If the context doesn't contain enough information to answer the question, please say so.
+
+      Context:
+      {context}
+
+      Question: {question}
+
+      Answer:
+    description: "Basic question answering template"
+    variables: ["context", "question"]
+    category: "qa"
+    max_context_length: 4000
+  
+  detailed_qa:
+    name: "detailed_qa"
+    template: |
+      Please answer the following question based on the provided context. 
+      Provide a detailed and comprehensive answer, citing specific information from the context when possible.
+
+      Context:
+      {context}
+
+      Question: {question}
+
+      Instructions:
+      - Use only the information provided in the context
+      - If the context doesn't contain the answer, clearly state that
+      - Provide specific details and examples from the context when relevant
+      - Structure your answer clearly with bullet points or numbered lists when appropriate
+
+      Answer:
+    description: "Detailed question answering with citations"
+    variables: ["context", "question"]
+    category: "qa"
+    max_context_length: 4000
+  
+  concise_qa:
+    name: "concise_qa"
+    template: |
+      Answer the question using only the provided context. Be concise and direct.
+
+      Context:
+      {context}
+
+      Question: {question}
+
+      Answer:
+    description: "Concise question answering template"
+    variables: ["context", "question"]
+    category: "qa"
+    max_context_length: 4000
+  
+  step_by_step_qa:
+    name: "step_by_step_qa"
+    template: |
+      Answer the following question by providing a step-by-step explanation based on the context.
+
+      Context:
+      {context}
+
+      Question: {question}
+
+      Please provide a step-by-step answer:
+
+      Answer:
+    description: "Step-by-step question answering"
+    variables: ["context", "question"]
+    category: "qa"
+    max_context_length: 4000
+
+# Summarization Prompts
+summarization_prompts:
+  context_summary:
+    name: "context_summary"
+    template: |
+      Please summarize the following context in a clear and concise manner.
+
+      Context:
+      {context}
+
+      Summary:
+    description: "Context summarization template"
+    variables: ["context"]
+    category: "summarization"
+    max_context_length: 8000
+  
+  key_points:
+    name: "key_points"
+    template: |
+      Extract the key points from the following context. Present them as a bulleted list.
+
+      Context:
+      {context}
+
+      Key Points:
+    description: "Extract key points from context"
+    variables: ["context"]
+    category: "summarization"
+    max_context_length: 8000
+  
+  executive_summary:
+    name: "executive_summary"
+    template: |
+      Create an executive summary of the following context. Focus on the most important information and insights.
+
+      Context:
+      {context}
+
+      Executive Summary:
+    description: "Executive summary generation"
+    variables: ["context"]
+    category: "summarization"
+    max_context_length: 8000
+
+# Question Generation Prompts
+question_generation:
+  generate_questions:
+    name: "generate_questions"
+    template: |
+      Based on the following context, generate {num_questions} relevant questions that could be answered using this information.
+
+      Context:
+      {context}
+
+      Generated Questions:
+    description: "Generate questions from context"
+    variables: ["context", "num_questions"]
+    category: "generation"
+    max_context_length: 4000
+  
+  generate_faq:
+    name: "generate_faq"
+    template: |
+      Create an FAQ section based on the following context. Include at least {num_questions} question-answer pairs.
+
+      Context:
+      {context}
+
+      FAQ:
+    description: "Generate FAQ from context"
+    variables: ["context", "num_questions"]
+    category: "generation"
+    max_context_length: 4000
+  
+  generate_quiz:
+    name: "generate_quiz"
+    template: |
+      Create a quiz with {num_questions} multiple-choice questions based on the following context. Include 4 options for each question and mark the correct answer.
+
+      Context:
+      {context}
+
+      Quiz:
+    description: "Generate quiz from context"
+    variables: ["context", "num_questions"]
+    category: "generation"
+    max_context_length: 4000
+
+# Classification Prompts
+classification_prompts:
+  sentiment_analysis:
+    name: "sentiment_analysis"
+    template: |
+      Classify the sentiment of the following text as positive, negative, or neutral.
+
+      Text:
+      {text}
+
+      Sentiment:
+    description: "Sentiment classification template"
+    variables: ["text"]
+    category: "classification"
+    max_text_length: 1000
+  
+  topic_classification:
+    name: "topic_classification"
+    template: |
+      Classify the main topic of the following text.
+
+      Text:
+      {text}
+
+      Main Topic:
+    description: "Topic classification template"
+    variables: ["text"]
+    category: "classification"
+    max_text_length: 1000
+  
+  intent_classification:
+    name: "intent_classification"
+    template: |
+      Classify the user's intent from the following query. Common intents include: information_seeking, transaction, navigation, greeting, complaint, compliment.
+
+      Query:
+      {query}
+
+      Intent:
+    description: "Intent classification template"
+    variables: ["query"]
+    category: "classification"
+    max_text_length: 500
+
+# Comparison Prompts
+comparison_prompts:
+  compare_documents:
+    name: "compare_documents"
+    template: |
+      Compare the following two documents and highlight their similarities and differences.
+
+      Document 1:
+      {document1}
+
+      Document 2:
+      {document2}
+
+      Comparison:
+    description: "Compare two documents"
+    variables: ["document1", "document2"]
+    category: "comparison"
+    max_context_length: 8000
+  
+  pros_and_cons:
+    name: "pros_and_cons"
+    template: |
+      Analyze the following text and list the pros and cons mentioned.
+
+      Text:
+      {text}
+
+      Pros:
+      
+      Cons:
+    description: "Extract pros and cons from text"
+    variables: ["text"]
+    category: "comparison"
+    max_text_length: 4000
+
+# Explanation Prompts
+explanation_prompts:
+  explain_concept:
+    name: "explain_concept"
+    template: |
+      Explain the concept of '{concept}' based on the following context. Make it easy to understand.
+
+      Context:
+      {context}
+
+      Explanation:
+    description: "Explain a concept based on context"
+    variables: ["concept", "context"]
+    category: "explanation"
+    max_context_length: 4000
+  
+  simplify_text:
+    name: "simplify_text"
+    template: |
+      Simplify the following text to make it easier to understand:
+
+      Original Text:
+      {text}
+
+      Simplified Text:
+    description: "Simplify complex text"
+    variables: ["text"]
+    category: "explanation"
+    max_text_length: 2000
+  
+  explain_like_im_five:
+    name: "explain_like_im_five"
+    template: |
+      Explain the following topic as if you were explaining it to a 5-year-old:
+
+      Topic:
+      {topic}
+
+      Context (optional):
+      {context}
+
+      Explanation:
+    description: "Explain topic in simple terms"
+    variables: ["topic", "context"]
+    category: "explanation"
+    max_context_length: 2000
+
+# Validation Prompts
+validation_prompts:
+  fact_check:
+    name: "fact_check"
+    template: |
+      Fact-check the following statement using the provided context.
+
+      Statement: {statement}
+
+      Context:
+      {context}
+
+      Fact-check result:
+    description: "Fact-check statement against context"
+    variables: ["statement", "context"]
+    category: "validation"
+    max_context_length: 4000
+  
+  validate_answer:
+    name: "validate_answer"
+    template: |
+      Review the following answer and determine if it's accurate based on the provided context.
+
+      Context:
+      {context}
+
+      Question: {question}
+
+      Answer: {answer}
+
+      Validation (Is this answer accurate based on the context? Yes/No with explanation):
+    description: "Validate answer accuracy"
+    variables: ["context", "question", "answer"]
+    category: "validation"
+    max_context_length: 4000
+  
+  check_completeness:
+    name: "check_completeness"
+    template: |
+      Check if the following answer completely addresses the question based on the context.
+
+      Question: {question}
+
+      Context:
+      {context}
+
+      Answer: {answer}
+
+      Completeness Check (Is the answer complete? Yes/No with explanation):
+    description: "Check answer completeness"
+    variables: ["question", "context", "answer"]
+    category: "validation"
+    max_context_length: 4000
+
+# Creative Prompts
+creative_prompts:
+  rewrite_text:
+    name: "rewrite_text"
+    template: |
+      Rewrite the following text in a {style} style:
+
+      Original Text:
+      {text}
+
+      Rewritten Text:
+    description: "Rewrite text in different style"
+    variables: ["text", "style"]
+    category: "creative"
+    max_text_length: 2000
+  
+  generate_title:
+    name: "generate_title"
+    template: |
+      Generate a compelling title for the following content:
+
+      Content:
+      {content}
+
+      Title:
+    description: "Generate title for content"
+    variables: ["content"]
+    category: "creative"
+    max_text_length: 4000
+  
+  create_outline:
+    name: "create_outline"
+    template: |
+      Create a structured outline for the following topic:
+
+      Topic:
+      {topic}
+
+      Context (optional):
+      {context}
+
+      Outline:
+    description: "Create outline for topic"
+    variables: ["topic", "context"]
+    category: "creative"
+    max_context_length: 4000
+
+# Prompt Configuration
+prompt_config:
+  # Default prompts for different use cases
+  defaults:
+    qa: "basic_qa"
+    summarization: "context_summary"
+    question_generation: "generate_questions"
+    classification: "topic_classification"
+    comparison: "compare_documents"
+    explanation: "explain_concept"
+    validation: "fact_check"
+    creative: "rewrite_text"
+  
+  # Prompt optimization settings
+  optimization:
+    max_context_length: 4000
+    max_response_length: 2000
+    temperature: 0.7
+    top_p: 1.0
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+  
+  # Caching settings
+  caching:
+    enabled: true
+    cache_duration: 3600  # 1 hour
+    max_cache_size: 1000
+  
+  # Quality control
+  quality_control:
+    min_response_length: 10
+    max_response_length: 5000
+    filter_patterns:
+      - "I'm sorry"
+      - "I cannot"
+      - "I don't have"
+    required_patterns: []

@@ -1,0 +1,328 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multi-source-rag-system"
+version = "1.0.0"
+description = "A comprehensive RAG (Retrieval-Augmented Generation) system with multi-source document support"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "RAG System Team", email = "team@example.com"}
+]
+maintainers = [
+    {name = "RAG System Team", email = "team@example.com"}
+]
+keywords = [
+    "rag",
+    "retrieval-augmented-generation",
+    "nlp",
+    "machine-learning",
+    "document-processing",
+    "vector-search",
+    "chromadb",
+    "openai",
+    "anthropic",
+    "huggingface"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+requires-python = ">=3.8"
+dependencies = [
+    # Core dependencies
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    
+    # Document processing
+    "pypdf2>=3.0.1",
+    "python-docx>=1.1.0",
+    "python-multipart>=0.0.6",
+    "pillow>=10.1.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "markdown>=3.5.0",
+    
+    # Vector database and embeddings
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "numpy>=1.24.0",
+    "scipy>=1.11.0",
+    "scikit-learn>=1.3.0",
+    
+    # AI/ML APIs
+    "openai>=1.6.0",
+    "anthropic>=0.8.0",
+    "cohere>=4.0.0",
+    "tiktoken>=0.5.0",
+    
+    # Data processing
+    "pandas>=2.1.0",
+    "pyyaml>=6.0.1",
+    "python-dotenv>=1.0.0",
+    "click>=8.1.0",
+    "rich>=13.7.0",
+    "tqdm>=4.66.0",
+    
+    # Caching and storage
+    "redis>=5.0.0",
+    "diskcache>=5.6.0",
+    
+    # HTTP and async
+    "httpx>=0.25.0",
+    "aiofiles>=23.2.0",
+    "asyncio-throttle>=1.0.0",
+    
+    # Utilities
+    "python-dateutil>=2.8.0",
+    "pytz>=2023.3",
+    "typing-extensions>=4.8.0",
+    "packaging>=23.2"
+]
+
+[project.optional-dependencies]
+# Development dependencies
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "pytest-xdist>=3.5.0",
+    "black>=23.11.0",
+    "isort>=5.12.0",
+    "flake8>=6.1.0",
+    "mypy>=1.7.0",
+    "pre-commit>=3.5.0",
+    "bandit>=1.7.0",
+    "safety>=2.3.0"
+]
+
+# Jupyter and notebooks
+jupyter = [
+    "jupyterlab>=4.0.0",
+    "jupyter>=1.0.0",
+    "ipywidgets>=8.1.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "plotly>=5.17.0",
+    "notebook>=7.0.0"
+]
+
+# Monitoring and logging
+monitoring = [
+    "prometheus-client>=0.19.0",
+    "structlog>=23.2.0",
+    "loguru>=0.7.0",
+    "sentry-sdk[fastapi]>=1.38.0"
+]
+
+# Performance and optimization
+performance = [
+    "orjson>=3.9.0",
+    "ujson>=5.8.0",
+    "lz4>=4.3.0",
+    "zstandard>=0.22.0"
+]
+
+# Documentation
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.4.0",
+    "mkdocstrings[python]>=0.24.0",
+    "mkdocs-mermaid2-plugin>=1.1.0"
+]
+
+# All optional dependencies
+all = [
+    "multi-source-rag-system[dev,jupyter,monitoring,performance,docs]"
+]
+
+[project.urls]
+Homepage = "https://github.com/example/multi-source-rag-system"
+Documentation = "https://multi-source-rag-system.readthedocs.io"
+Repository = "https://github.com/example/multi-source-rag-system.git"
+"Bug Tracker" = "https://github.com/example/multi-source-rag-system/issues"
+Changelog = "https://github.com/example/multi-source-rag-system/blob/main/CHANGELOG.md"
+
+[project.scripts]
+rag-server = "main:main"
+rag-setup = "scripts.setup:main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ingestion*", "indexing*", "chains*", "prompts*", "models*", "evaluation*", "tests*"]
+exclude = ["tests*", "docs*", "notebook*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml", "*.json", "*.txt", "*.md"]
+
+# Black code formatter configuration
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+# isort import sorting configuration
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["ingestion", "indexing", "chains", "prompts", "models", "evaluation"]
+known_third_party = ["fastapi", "pydantic", "chromadb", "openai", "anthropic", "cohere"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+# MyPy type checking configuration
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "chromadb.*",
+    "sentence_transformers.*",
+    "openai.*",
+    "anthropic.*",
+    "cohere.*",
+    "pypdf2.*",
+    "python_docx.*",
+    "beautifulsoup4.*",
+    "redis.*",
+    "diskcache.*"
+]
+ignore_missing_imports = true
+
+# Pytest configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--tb=short",
+    "--cov=ingestion",
+    "--cov=indexing", 
+    "--cov=chains",
+    "--cov=prompts",
+    "--cov=models",
+    "--cov=evaluation",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+    "--cov-fail-under=80"
+]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "unit: mark test as a unit test",
+    "integration: mark test as an integration test",
+    "slow: mark test as slow running",
+    "smoke: mark test as smoke test",
+    "api: mark test as API test"
+]
+asyncio_mode = "auto"
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["ingestion", "indexing", "chains", "prompts", "models", "evaluation"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/build/*",
+    "*/dist/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+# Bandit security linter configuration
+[tool.bandit]
+exclude_dirs = ["tests", "build", "dist"]
+skips = ["B101", "B601"]  # Skip assert_used and shell_injection
+
+# Safety dependency checker configuration
+[tool.safety]
+ignore = []  # List of CVEs to ignore
+
+# MkDocs documentation configuration
+[tool.mkdocs]
+site_name = "Multi-Source RAG System"
+site_description = "Comprehensive RAG system with multi-source document support"
+site_author = "RAG System Team"
+repo_url = "https://github.com/example/multi-source-rag-system"
+
+[tool.mkdocs.theme]
+name = "material"
+palette = {scheme = "default", primary = "blue", accent = "blue"}
+font = {text = "Roboto", code = "Roboto Mono"}
+features = [
+    "navigation.tabs",
+    "navigation.tabs.sticky",
+    "navigation.sections",
+    "navigation.expand",
+    "search.highlight",
+    "search.share"
+]
+
+[tool.mkdocs.plugins]
+mkdocstrings = {inherit = {git = {revisions = ["main"]}}}
+mkdocs-mermaid2-plugin = {}

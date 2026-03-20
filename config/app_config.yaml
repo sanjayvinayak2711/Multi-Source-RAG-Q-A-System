@@ -1,0 +1,197 @@
+# Application Configuration
+app:
+  name: "Multi-Source RAG System"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+  host: "0.0.0.0"
+  port: 8000
+
+# Database Configuration
+database:
+  type: "chroma"
+  persist_directory: "data/vector_store"
+  collection_name: "documents"
+  embedding_dimension: 1536
+
+# Model Configuration
+models:
+  # Default embedding model
+  embedding:
+    provider: "openai"
+    model_name: "text-embedding-ada-002"
+    api_key_env: "OPENAI_API_KEY"
+    batch_size: 32
+    embedding_dimension: 1536
+  
+  # Default LLM
+  llm:
+    provider: "openai"
+    model_name: "gpt-3.5-turbo"
+    api_key_env: "OPENAI_API_KEY"
+    max_tokens: 2048
+    temperature: 0.7
+    top_p: 1.0
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+
+# RAG Pipeline Configuration
+rag:
+  # Retrieval settings
+  retrieval:
+    top_k: 5
+    similarity_threshold: 0.7
+    search_type: "similarity"
+  
+  # Chunking settings
+  chunking:
+    strategy: "recursive"  # recursive, fixed_size, semantic
+    chunk_size: 1000
+    chunk_overlap: 200
+    min_chunk_length: 50
+    max_chunk_length: 2000
+  
+  # Context building
+  context:
+    max_context_length: 4000
+    max_documents: 5
+    include_metadata: true
+    include_scores: true
+    context_format: "document"  # document, paragraph, sentence
+  
+  # Query processing
+  query_processing:
+    expand_queries: true
+    max_expansions: 3
+    remove_stopwords: false
+    normalize_text: true
+    min_query_length: 3
+
+# Document Processing
+document_processing:
+  # Supported file types
+  supported_formats:
+    - ".pdf"
+    - ".txt"
+    - ".docx"
+    - ".md"
+    - ".html"
+    - ".json"
+  
+  # Preprocessing
+  preprocessing:
+    clean_whitespace: true
+    remove_urls: true
+    remove_emails: true
+    normalize_text: true
+    deduplicate: true
+  
+  # Data directories
+  data_directory: "data/source_documents"
+  watch_directory: false  # Auto-watch for new files
+
+# Caching Configuration
+cache:
+  enabled: true
+  type: "redis"  # redis, memory, file
+  redis:
+    host: "localhost"
+    port: 6379
+    password: null
+    db: 0
+    ttl: 3600  # 1 hour
+  memory:
+    max_size: 1000
+    ttl: 1800  # 30 minutes
+
+# Evaluation Configuration
+evaluation:
+  enabled: true
+  metrics:
+    retrieval:
+      - "hit_rate"
+      - "mrr"
+      - "precision_at_k"
+      - "ndcg_at_k"
+    generation:
+      - "faithfulness"
+      - "answer_relevancy"
+      - "context_precision"
+      - "context_recall"
+  
+  # Evaluation datasets
+  datasets:
+    test_data_path: "data/evaluation/test_data.json"
+    validation_data_path: "data/evaluation/validation_data.json"
+
+# API Configuration
+api:
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    burst_size: 10
+  
+  # Authentication
+  authentication:
+    enabled: false
+    type: "api_key"  # api_key, oauth, jwt
+    api_key_env: "API_KEY"
+  
+  # CORS
+  cors:
+    enabled: true
+    origins: ["*"]
+    methods: ["GET", "POST", "PUT", "DELETE"]
+    headers: ["*"]
+
+# Monitoring Configuration
+monitoring:
+  enabled: true
+  metrics:
+    prometheus:
+      enabled: true
+      port: 9090
+      endpoint: "/metrics"
+  
+  logging:
+    file_logging: true
+    log_file: "logs/app.log"
+    log_rotation: "daily"
+    max_file_size: "10MB"
+    backup_count: 5
+  
+  # Health checks
+  health_check:
+    enabled: true
+    endpoint: "/health"
+    interval: 30  # seconds
+
+# Security Configuration
+security:
+  # Input validation
+  input_validation:
+    max_query_length: 1000
+    max_document_size: 10485760  # 10MB
+    allowed_file_types: [".pdf", ".txt", ".docx", ".md", ".html", ".json"]
+  
+  # Output filtering
+  output_filtering:
+    max_response_length: 10000
+    sanitize_html: true
+    remove_sensitive_data: true
+
+# Development Configuration
+development:
+  hot_reload: false
+  debug_mode: false
+  profiling: false
+  mock_external_apis: false
+
+# Production Configuration
+production:
+  workers: 4
+  timeout: 30
+  keepalive: 2
+  max_requests: 1000
+  max_requests_jitter: 100

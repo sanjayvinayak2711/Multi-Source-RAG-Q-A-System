@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG AI System - Professional Interface</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+<header>
+    <div class="logo">
+        <i class="fas fa-brain"></i>
+        <span>RAG AI System</span>
+    </div>
+    <p class="subtitle">Intelligent Document Analysis with Advanced AI</p>
+</header>
+
+<main class="main-content">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+
+            <!-- COMPACT METRICS -->
+            <div class="sidebar-metrics">
+                <div class="metric-square">
+                    <div class="metric-square-header">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Accuracy</span>
+                    </div>
+                    <span class="metric-square-value" id="accuracyValue">--</span>
+                    <span class="metric-square-label">Performance</span>
+                </div>
+
+                <div class="metric-square">
+                    <div class="metric-square-header">
+                        <i class="fas fa-bolt"></i>
+                        <span>Speed</span>
+                    </div>
+                    <span class="metric-square-value" id="speedValue">--</span>
+                    <span class="metric-square-label">Latency</span>
+                </div>
+
+                <div class="metric-square">
+                    <div class="metric-square-header">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Docs</span>
+                    </div>
+                    <span class="metric-square-value" id="docCount">0</span>
+                    <span class="metric-square-label">Uploaded</span>
+                </div>
+
+                <div class="metric-square">
+                    <div class="metric-square-header">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat</span>
+                    </div>
+                    <span class="metric-square-value" id="msgCount">0</span>
+                    <span class="metric-square-label">Messages</span>
+                </div>
+            </div>
+
+            <!-- DOCUMENTS SECTION -->
+            <div class="documents-section">
+                <h2 class="section-title">PDFs</h2>
+
+                <div class="documents-list" id="documentsList">
+                    <p class="empty">No PDFs uploaded yet</p>
+                </div>
+
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- CHAT -->
+    <section class="chat-area">
+
+        <div class="chat-header">
+            <h2>AI Assistant</h2>
+            <button id="newChatBtn">
+                <i class="fas fa-plus"></i>
+                New Chat
+            </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div id="welcomeMessage" class="welcome-message">
+                <h3>Welcome</h3>
+                <p>I'm your RAG assistant. Upload documents to get started.</p>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <div class="input-container">
+                <button class="upload-btn" id="uploadBtn" title="Upload files">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <textarea id="messageInput" placeholder="Ask about your documents..." rows="1"></textarea>
+                <button id="sendBtn" class="send-btn">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt" multiple style="display: none;">
+        </div>
+
+    </section>
+
+</main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
