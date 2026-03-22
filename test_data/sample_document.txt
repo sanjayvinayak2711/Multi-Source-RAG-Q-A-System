@@ -1,0 +1,59 @@
+# Product Manual - TechPro 5000
+
+## Installation Guide
+The TechPro 5000 can be installed on Windows 10 or later. Download the installer from our website and run the setup.exe file. Follow the on-screen instructions to complete installation.
+
+## System Requirements
+- Windows 10/11 or macOS 10.15+
+- 8GB RAM minimum (16GB recommended)
+- 500MB available disk space
+- USB 3.0 port required
+
+## Battery Life
+The Pro model battery lasts approximately 12 hours with normal usage. Heavy usage may reduce battery life to 6-8 hours.
+
+## Warranty Information
+All hardware defects are covered under our 2-year warranty from the date of purchase. This does not cover damage from misuse or accidents.
+
+## Password Reset
+If you forgot your password, click "Forgot Password" on the login screen. Enter your email address and follow the instructions sent to your email.
+
+---
+
+# Return Policy
+
+## Refund Policy
+We offer a 30-day money-back guarantee for all products. Items must be returned in original condition with all accessories included.
+
+## Return Process
+To initiate a return, contact our customer service team with your order number. We will provide a return shipping label.
+
+## Restocking Fees
+No restocking fees for returns within 30 days. Returns after 30 days may incur a 15% restocking fee.
+
+---
+
+# Payment and Shipping
+
+## Payment Methods
+We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for enterprise orders.
+
+## Shipping Costs
+- Domestic shipping: $9.99 standard, $24.99 express
+- International shipping: $29.99 standard, $59.99 express
+- Free shipping on orders over $100
+
+## Mobile Apps
+Mobile apps are available for both iOS and Android:
+- iOS: Download from App Store (requires iOS 12+)
+- Android: Download from Google Play Store (requires Android 8+)
+
+---
+
+# Subscription Management
+
+## Cancellation
+You can cancel your subscription anytime from your account settings. Go to Settings > Subscription > Cancel Subscription.
+
+## Refund for Subscription
+We offer prorated refunds for annual subscriptions if cancelled within the first 30 days.
