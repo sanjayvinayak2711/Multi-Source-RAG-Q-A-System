@@ -309,6 +309,16 @@ run.bat  # Windows only
 
 ---
 
+## Key Achievements
+
+📄 **Improved response accuracy from ~45% → 89%** based on evaluation dataset
+🔗 **Increased citation coverage from 0% → 100%** for generated answers
+🎯 **Reduced hallucinations significantly by enforcing retrieval grounding**
+⚡ **Achieved response time of ~1.2s in test conditions**
+🔍 **Implemented multi-source retrieval with structured ranking**
+
+---
+
 ## Measurable Improvements
 
 ### Before vs After RAG System
